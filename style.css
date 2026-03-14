@@ -29,7 +29,7 @@ body {
 }
 
 .screen.active {
-  display: flex;
+  display: flex !important;
 }
 
 @keyframes fadeIn {
