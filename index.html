@@ -84,6 +84,11 @@
         <button class="btn-option" onclick="answer('q4', 'walk')">Coffee and a walk</button>
         <button class="btn-option" onclick="answer('q4', 'dinner')">Dinner and dangerous eye contact</button>
         <button class="btn-option" onclick="answer('q4', 'spontaneous')">Something spontaneous and slightly irresponsible</button>
+        <div class="custom-suggestion">
+  abel for="date-suggestion">Or suggest something else:</label>
+  <input type="text" id="date-suggestion" name="custom_date_idea" placeholder="Your creative date idea..." />
+</div>
+
       </div>
     </section>
 
@@ -162,5 +167,17 @@
   </div>
 
   <script src="script.js"></script>
+  <!-- Thank You Screen -->
+<section class="screen" id="thank-you">
+  anvas id="confetti-canvas"></canvas>
+  <div class="thank-you-content">
+    <h1 class="glow">🎉 You did it! 🎉</h1>
+    <h2>Congrats on not fumbling</h2>
+    <p class="result-text">Michael will review your responses and reach out soon</p>
+    <p class="meme-text">Pro tip: Keep your phone notifications on 👀</p>
+    <img src="https://media.giphy.com/media/111ebonMs90YLu/giphy.gif" alt="Success" style="max-width: 300px; margin: 20px auto;">
+  </div>
+</section>
+
 </body>
 </html>
