@@ -333,3 +333,16 @@ p {
     text-shadow: 0 0 20px #fff, 0 0 30px #ff0a54, 0 0 40px #ff0a54, 0 0 50px #ff0a54;
   }
 }
+
+
+/* Dopamine hit animation */
+@keyframes float-up {
+    from {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+    to {
+        opacity: 0;
+        transform: translateY(-100px) scale(1.5);
+    }
+}
