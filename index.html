@@ -7,11 +7,159 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <main>
-    <h1>So you matched with Michael — where will you go from here?</h1>
-    <p>Choose carefully. Some paths may lead to banter, beverages, and unforeseen chemistry.</p>
-    <button id="startBtn">Enter the portal</button>
-  </main>
+  <div id="app">
+    <!-- Hero Section -->
+    <section class="screen active" id="screen-hero">
+      <h1>So you matched with Michael — where will you go from here?</h1>
+      <p>Choose carefully. Some paths may lead to banter, beverages, and unforeseen chemistry.</p>
+      <button class="btn-primary" onclick="nextScreen('screen-disclaimer')">Enter the portal</button>
+    </section>
+
+    <!-- Disclaimer Screen -->
+    <section class="screen" id="screen-disclaimer">
+      <h2>⚠️ Legal Notice</h2>
+      <p>This is not a test, but your answers will absolutely be judged in a fun and attractive way.</p>
+      <button class="btn-primary" onclick="nextScreen('screen-q1')">I accept the risk</button>
+    </section>
+
+    <!-- Question 1: Vibe Check -->
+    <section class="screen" id="screen-q1">
+      <h2>What was the initial reason you matched?</h2>
+      <div class="options">
+        <button class="btn-option" onclick="answer('q1', 'fun')">He seems fun</button>
+        <button class="btn-option" onclick="answer('q1', 'trouble')">He seems like trouble, but the manageable kind</button>
+        <button class="btn-option" onclick="answer('q1', 'vibe')">I believe in the power of a strong vibe</button>
+        <button class="btn-option" onclick="answer('q1', 'instinct')">I acted on instinct and now I'm here</button>
+      </div>
+    </section>
+
+    <!-- Meme 1 -->
+    <section class="screen meme" id="meme-1">
+      <h2>🎬 Live footage</h2>
+      <p class="meme-text">Of a woman making a bold but potentially rewarding decision</p>
+      <button class="btn-primary" onclick="nextScreen('screen-q2')">Continue investigation</button>
+    </section>
+
+    <!-- Question 2: Intent Check -->
+    <section class="screen" id="screen-q2">
+      <h2>What are you actually looking for these days?</h2>
+      <div class="options">
+        <button class="btn-option" onclick="answer('q2', 'real')">Something real</button>
+        <button class="btn-option" onclick="answer('q2', 'intentional')">Intentional dating, but chill</button>
+        <button class="btn-option" onclick="answer('q2', 'open')">Open-minded, seeing where it goes</button>
+        <button class="btn-option" onclick="answer('q2', 'vibing')">Honestly? Just vibing</button>
+      </div>
+    </section>
+
+    <!-- Meme 2 -->
+    <section class="screen meme" id="meme-2">
+      <h2>📰 Breaking News</h2>
+      <p class="meme-text">Rare scenes of two adults being honest on a dating app</p>
+      <button class="btn-primary" onclick="nextScreen('screen-q3')">Proceed with transparency</button>
+    </section>
+
+    <!-- Question 3: Availability Check -->
+    <section class="screen" id="screen-q3">
+      <h2>Be honest — are you actually open to dating right now?</h2>
+      <div class="options">
+        <button class="btn-option" onclick="answer('q3', 'yes')">Yes, fully</button>
+        <button class="btn-option" onclick="answer('q3', 'mostly')">Mostly yes</button>
+        <button class="btn-option" onclick="answer('q3', 'chaotic')">Maybe, but I'm chaotic</button>
+        <button class="btn-option" onclick="answer('q3', 'airplane')">Emotionally I'm on airplane mode</button>
+      </div>
+    </section>
+
+    <!-- Meme 3 -->
+    <section class="screen meme" id="meme-3">
+      <h2>🔍 Status Update</h2>
+      <p class="meme-text">Emotional availability detected. Investigating further.</p>
+      <button class="btn-primary" onclick="nextScreen('screen-q4')">Continue audit</button>
+    </section>
+
+    <!-- Question 4: Date Style -->
+    <section class="screen" id="screen-q4">
+      <h2>Pick your ideal first-date energy</h2>
+      <div class="options">
+        <button class="btn-option" onclick="answer('q4', 'cocktails')">Cocktails and banter</button>
+        <button class="btn-option" onclick="answer('q4', 'walk')">Coffee and a walk</button>
+        <button class="btn-option" onclick="answer('q4', 'dinner')">Dinner and dangerous eye contact</button>
+        <button class="btn-option" onclick="answer('q4', 'spontaneous')">Something spontaneous and slightly irresponsible</button>
+      </div>
+    </section>
+
+    <!-- Question 5: Weekend Reality -->
+    <section class="screen" id="screen-q5">
+      <h2>What does your weekend availability usually look like?</h2>
+      <div class="options">
+        <button class="btn-option" onclick="answer('q5', 'friday')">Friday works</button>
+        <button class="btn-option" onclick="answer('q5', 'saturday')">Saturday is elite</button>
+        <button class="btn-option" onclick="answer('q5', 'sunday')">Sunday is underrated</button>
+        <button class="btn-option" onclick="answer('q5', 'conditional')">I'm free, but only if I like you</button>
+      </div>
+    </section>
+
+    <!-- Meme 4 -->
+    <section class="screen meme" id="meme-4">
+      <h2>⚡ Alert</h2>
+      <p class="meme-text">Okay wait… so this might actually become plans</p>
+      <button class="btn-primary" onclick="nextScreen('screen-calendar')">Pick your window</button>
+    </section>
+
+    <!-- Calendar Screen -->
+    <section class="screen" id="screen-calendar">
+      <h2>When are you free? (Weekends only)</h2>
+      <p class="subtitle">Select all days that work for you</p>
+      <div class="calendar">
+        <label class="calendar-day">
+          <input type="checkbox" name="availability" value="Friday">
+          <span>Friday</span>
+        </label>
+        <label class="calendar-day">
+          <input type="checkbox" name="availability" value="Saturday">
+          <span>Saturday</span>
+        </label>
+        <label class="calendar-day">
+          <input type="checkbox" name="availability" value="Sunday">
+          <span>Sunday</span>
+        </label>
+      </div>
+      <button class="btn-primary" onclick="nextScreen('screen-final')">Lock it in</button>
+    </section>
+
+    <!-- Final Question -->
+    <section class="screen" id="screen-final">
+      <h2>Would you go on a date with Michael?</h2>
+      <div class="options">
+        <button class="btn-option" onclick="answer('final', 'yes')">Yes, obviously</button>
+        <button class="btn-option" onclick="answer('final', 'snacks')">Yes, but I need snacks</button>
+        <button class="btn-option" onclick="answer('final', 'convince')">Potentially, convince me</button>
+        <button class="btn-option dodgy" id="noBtn" onclick="dodgeNo()">No</button>
+      </div>
+    </section>
+
+    <!-- Loading Screen -->
+    <section class="screen meme" id="screen-loading">
+      <h2>⏳ Calculating...</h2>
+      <p class="meme-text">Analyzing levels of charm, timing, delusion, and weekend logistics</p>
+      <div class="loader"></div>
+    </section>
+
+    <!-- Result Screen -->
+    <section class="screen" id="screen-result">
+      <h1 class="result-title">100/100</h1>
+      <h2>Compatibility Confirmed</h2>
+      <p class="result-text">A frankly suspicious result, but who are we to argue with destiny?</p>
+      <p class="result-sub">The stars, the algorithm, and several memes have spoken.</p>
+      <p class="result-final">You are now cleared for one date.</p>
+      <form id="finalForm" action="https://formspree.io/f/mqeylwkn" method="POST">
+        <input type="hidden" name="answers" id="answersField">
+        <input type="hidden" name="score" id="scoreField">
+        <input type="text" name="name" placeholder="Your name" required>
+        <input type="email" name="email" placeholder="Your email" required>
+        <button type="submit" class="btn-primary">Submit & See You Soon</button>
+      </form>
+    </section>
+  </div>
 
   <script src="script.js"></script>
 </body>
