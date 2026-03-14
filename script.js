@@ -182,9 +182,7 @@ function startConfetti() {
 let dodgeCount = 0;
 
 function dodgeNo() {
-        // Only dodge twice, then allow click
-    if (dodgeCount >= 2) {
-        answer('final', 'no-means-yes', 'screen-loading');
+        // Only dodge three times, then allow click        if (dodgeCount >= 3) {        answer('final', 'no-means-yes', 'screen-loading');
         return;
     }
     
