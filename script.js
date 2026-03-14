@@ -18,6 +18,9 @@ function nextScreen(screenId) {
 // Answer handler with scoring
 function answer(question, value, nextScreenId) {
     userData.answers[question] = value;
+        
+    // Dopamine hit!
+    celebrate();
 
     // Calculate score based on answer
     let points = 0;
@@ -217,4 +220,25 @@ if (loadingScreen) {
         attributes: true,
         attributeFilter: ['class']
     });
+}
+
+
+// Dopamine hit - quick celebration when answering
+function celebrate() {
+    const emojis = ['✨', '👏', '🚀', '🎉', '💯', '⭐', '🔥'];
+    const emoji = emojis[Math.floor(Math.random() * emojis.length)];
+    
+    const celebration = document.createElement('div');
+    celebration.textContent = emoji;
+    celebration.style.position = 'fixed';
+    celebration.style.fontSize = '40px';
+    celebration.style.left = Math.random() * window.innerWidth + 'px';
+    celebration.style.top = '50%';
+    celebration.style.zIndex = '10000';
+    celebration.style.pointerEvents = 'none';
+    celebration.style.animation = 'float-up 1s ease-out';
+    
+    document.body.appendChild(celebration);
+    
+    setTimeout(() => celebration.remove(), 1000);
 }
