@@ -176,3 +176,36 @@ function startConfetti() {
     
     setInterval(draw, 33);
 }
+
+// Dodge No button functionality
+function dodgeNo() {
+    const noBtn = document.getElementById('noBtn');
+    const randomX = Math.random() * (window.innerWidth - 200);
+    const randomY = Math.random() * (window.innerHeight - 100);
+    
+    noBtn.style.position = 'fixed';
+    noBtn.style.left = randomX + 'px';
+    noBtn.style.top = randomY + 'px';
+    noBtn.style.transition = 'all 0.3s ease';
+}
+
+// Auto-advance from loading screen to result screen
+const loadingScreen = document.getElementById('screen-loading');
+if (loadingScreen) {
+    // Detect when loading screen becomes active
+    const observer = new MutationObserver((mutations) => {
+        mutations.forEach((mutation) => {
+            if (mutation.target.classList.contains('active')) {
+                // Wait 3 seconds then show result screen
+                setTimeout(() => {
+                    nextScreen('screen-result');
+                }, 3000);
+            }
+        });
+    });
+    
+    observer.observe(loadingScreen, {
+        attributes: true,
+        attributeFilter: ['class']
+    });
+}
