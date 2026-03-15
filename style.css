@@ -217,7 +217,9 @@ p {
   margin: 20px 0 30px;
 }
 
-#finalForm {
+/* BUG FIX 4: The selector was #finalForm but the HTML uses id="date-form".
+   Changed to match so the form inputs actually get styled. */
+#date-form {
   display: flex;
   flex-direction: column;
   gap: 15px;
@@ -226,8 +228,8 @@ p {
   margin-top: 20px;
 }
 
-#finalForm input[type="text"],
-#finalForm input[type="email"] {
+#date-form input[type="text"],
+#date-form input[type="email"] {
   padding: 16px 20px;
   font-size: 1rem;
   border: 2px solid rgba(255, 255, 255, 0.1);
@@ -238,11 +240,11 @@ p {
   transition: all 0.3s ease;
 }
 
-#finalForm input::placeholder {
+#date-form input::placeholder {
   color: #aaa;
 }
 
-#finalForm input:focus {
+#date-form input:focus {
   border-color: rgba(240, 147, 251, 0.5);
   background: rgba(255, 255, 255, 0.08);
 }
@@ -333,7 +335,6 @@ p {
     text-shadow: 0 0 20px #fff, 0 0 30px #ff0a54, 0 0 40px #ff0a54, 0 0 50px #ff0a54;
   }
 }
-
 
 /* Dopamine hit animation */
 @keyframes float-up {
