@@ -151,7 +151,7 @@ body::after {
   display: inline-block;
   animation: marquee 12s linear infinite;
   font-size: 0.75rem;
-  color: var(--lime);
+  color: var(--navy);
   font-family: 'Comic Neue', cursive;
   font-weight: 700;
   letter-spacing: 0.1em;
