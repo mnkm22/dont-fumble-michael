@@ -150,16 +150,17 @@ body::after {
 .marquee-inner {
   display: inline-block;
   animation: marquee 12s linear infinite;
+  animation-delay: 0s;
   font-size: 0.75rem;
-  color: var(--navy);
+  color: var(--yellow);
   font-family: 'Comic Neue', cursive;
   font-weight: 700;
   letter-spacing: 0.1em;
 }
 
 @keyframes marquee {
-  from { transform: translateX(100vw); }
-  to   { transform: translateX(-100%); }
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
 }
 
 /* ── TYPOGRAPHY ── */
@@ -504,7 +505,7 @@ p {
 
 .under-construction {
   font-size: 0.75rem;
-  color: #cc0000;
+  color: #000080 !important;
   background: var(--yellow);
   display: inline-block;
   padding: 3px 10px;
