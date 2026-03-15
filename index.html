@@ -3,192 +3,204 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Well well well, what do we have here?</title>    <link rel="stylesheet" href="style.css" />
+    <title>Well well well, what do we have here?</title>
+    <link rel="stylesheet" href="style.css" />
 </head>
 <body>
     <div id="app">
         <!-- Hero Section -->
-                <!-- Music Choice Screen -->
-        <section class="screen active" id="screen-music">
-            <h2>🎵 Background Music?</h2>
-            <p>Would you like some vibes while you navigate this experience?</p>
-            <div class="options">
-                <button class="btn-option" onclick="startMusic(true)">Yes, play the music ✨</button>
-                <button class="btn-option" onclick="startMusic(false)">No thanks, keep it quiet</button>
+        <section class="hero-section">
+            <h1>🎭 Well well well, what do we have here?</h1>
+            <p class="subtitle">Choose carefully. Some paths may lead to banter, beverages, and unforeseen chemistry.</p>
+            <p class="disclaimer">⚠️ This is not a test, but your answers will absolutely be judged in a fun and attractive way.</p>
+        </section>
+
+        <!-- Main Questionnaire Form -->
+        <form id="date-form" action="https://formspree.io/f/maeylwkn" method="POST">
+            
+            <!-- Question 1: Initial Reason -->
+            <section class="question-section">
+                <h2>💭 Question 1: What was the initial reason you matched?</h2>
+                <div class="options">
+                    <label class="option-card">
+                        <input type="radio" name="q1" value="fun" required>
+                        <span>He seems fun</span>
+                    </label>
+                    <label class="option-card">
+                        <input type="radio" name="q1" value="trouble">
+                        <span>He seems like trouble, but the manageable kind</span>
+                    </label>
+                    <label class="option-card">
+                        <input type="radio" name="q1" value="vibe">
+                        <span>I believe in the power of a strong vibe</span>
+                    </label>
+                    <label class="option-card">
+                        <input type="radio" name="q1" value="instinct">
+                        <span>I acted on instinct and now I'm here</span>
+                    </label>
+                </div>
+                <p class="meme-text">🔍 Live footage of a woman making a bold but potentially rewarding decision</p>
+            </section>
+
+            <!-- Question 2: What are you looking for -->
+            <section class="question-section">
+                <h2>🎯 Question 2: What are you actually looking for these days?</h2>
+                <div class="options">
+                    <label class="option-card">
+                        <input type="radio" name="q2" value="real" required>
+                        <span>Something real</span>
+                    </label>
+                    <label class="option-card">
+                        <input type="radio" name="q2" value="intentional">
+                        <span>Intentional dating, but chill</span>
+                    </label>
+                    <label class="option-card">
+                        <input type="radio" name="q2" value="open">
+                        <span>Open-minded, seeing where it goes</span>
+                    </label>
+                    <label class="option-card">
+                        <input type="radio" name="q2" value="vibes">
+                        <span>Honestly? Just vibes</span>
+                    </label>
+                </div>
+                <p class="meme-text">📊 Noted. Adjusting expectations and making a risk assessment</p>
+            </section>
+
+            <!-- Question 3: Availability Check -->
+            <section class="question-section">
+                <h2>✅ Question 3: Be honest — are you actually open to dating right now?</h2>
+                <div class="options">
+                    <label class="option-card">
+                        <input type="radio" name="q3" value="yes" required>
+                        <span>Yes, fully</span>
+                    </label>
+                    <label class="option-card">
+                        <input type="radio" name="q3" value="mostly">
+                        <span>Mostly yes</span>
+                    </label>
+                    <label class="option-card">
+                        <input type="radio" name="q3" value="chaotic">
+                        <span>Maybe, but I'm chaotic</span>
+                    </label>
+                    <label class="option-card">
+                        <input type="radio" name="q3" value="complicated">
+                        <span>It's complicated</span>
+                    </label>
+                </div>
+                <p class="meme-text">📱 Status Update: Emotional availability detected. Investigating further.</p>
+            </section>
+
+            <!-- Question 4: Date Style -->
+            <section class="question-section">
+                <h2>🍹 Question 4: Pick your ideal first-date energy</h2>
+                <div class="options">
+                    <label class="option-card">
+                        <input type="radio" name="q4" value="cocktails" required>
+                        <span>Cocktails and clever conversation</span>
+                    </label>
+                    <label class="option-card">
+                        <input type="radio" name="q4" value="walk">
+                        <span>A walk where we accidentally talk for 3 hours</span>
+                    </label>
+                    <label class="option-card">
+                        <input type="radio" name="q4" value="dinner">
+                        <span>Dinner somewhere we both pretend not to be nervous</span>
+                    </label>
+                    <label class="option-card">
+                        <input type="radio" name="q4" value="spontaneous">
+                        <span>Something spontaneous that makes a good story</span>
+                    </label>
+                </div>
+                <div class="custom-suggestion">
+                    <label for="date-suggestion">Or suggest something else:</label>
+                    <input type="text" id="date-suggestion" name="custom_date_idea" placeholder="Tell me your wildest date idea">
+                </div>
+            </section>
+
+            <!-- Question 5: Weekend Availability -->
+            <section class="question-section">
+                <h2>📅 Question 5: What does your weekend availability usually look like?</h2>
+                <div class="options">
+                    <label class="option-card">
+                        <input type="radio" name="q5" value="friday" required>
+                        <span>Friday nights are my sweet spot</span>
+                    </label>
+                    <label class="option-card">
+                        <input type="radio" name="q5" value="saturday">
+                        <span>Saturday adventures preferred</span>
+                    </label>
+                    <label class="option-card">
+                        <input type="radio" name="q5" value="sunday">
+                        <span>Sunday vibes only</span>
+                    </label>
+                    <label class="option-card">
+                        <input type="radio" name="q5" value="conditional">
+                        <span>Conditional on whether mercury is in retrograde</span>
+                    </label>
+                </div>
+                <p class="meme-text">📅 Alert: Okay wait... so this might actually become plans</p>
+            </section>
+
+            <!-- Calendar Input -->
+            <section class="question-section">
+                <h2>🗓️ When are you free? (Weekends only)</h2>
+                <p class="calendar-hint">Pick a date (or a few) when you'd actually show up:</p>
+                <input type="text" name="availability" placeholder="e.g., This Friday, Next Saturday, etc." required>
+            </section>
+
+            <!-- Final Questions -->
+            <section class="question-section">
+                <h2>📝 The Final Stretch</h2>
+                <div class="form-group">
+                    <label for="name">What should I call you?</label>
+                    <input type="text" id="name" name="name" placeholder="Your name" required>
+                </div>
+                <div class="form-group">
+                    <label for="instagram">Instagram handle (so we can actually plan this)</label>
+                    <input type="text" id="instagram" name="instagram" placeholder="Your Instagram" required>
+                </div>
+            </section>
+
+            <!-- Hidden fields for score -->
+            <input type="hidden" name="answers" id="answersField">
+            <input type="hidden" name="score" id="scoreField" value="100">
+
+            <!-- Submit Button -->
+            <div class="submit-section">
+                <button type="submit" class="btn-submit" id="submitBtn">🎯 Submit & See My Score</button>
             </div>
-        </section>
-
-        <section class="screen" id="screen-hero">            <h1>Well well well, what do we have here?</h1>
-            <p>Choose carefully. Some paths may lead to banter, beverages, and unforeseen chemistry.</p>
-            <button class="btn-primary" onclick="nextScreen('screen-disclaimer')">Enter the portal</button>
-        </section>
-
-        <!-- Disclaimer Screen -->
-        <section class="screen" id="screen-disclaimer">
-            <h2>⚠️ Legal Notice</h2>
-            <p>This is not a test, but your answers will absolutely be judged in a fun and attractive way.</p>
-            <button class="btn-primary" onclick="nextScreen('screen-q1')">I accept the risk</button>
-        </section>
-
-        <!-- Question 1: Vibe Check -->
-        <section class="screen" id="screen-q1">
-            <h2>What was the initial reason you matched?</h2>
-            <div class="options">
-                <button class="btn-option" onclick="answer('q1', 'fun', 'meme-1')">He seems fun</button>
-                <button class="btn-option" onclick="answer('q1', 'trouble', 'meme-1')">He seems like trouble, but the manageable kind</button>
-                <button class="btn-option" onclick="answer('q1', 'vibe', 'meme-1')">I believe in the power of a strong vibe</button>
-                <button class="btn-option" onclick="answer('q1', 'instinct', 'meme-1')">I acted on instinct and now I'm here</button>
-            </div>
-        </section>
-
-        <!-- Meme 1 -->
-        <section class="screen meme" id="meme-1">
-            <h2>🔍 Live footage</h2>
-            <p class="meme-text">Of a woman making a bold but potentially rewarding decision</p>
-            <button class="btn-primary" onclick="nextScreen('screen-q2')">Continue investigation</button>
-        </section>
-
-        <!-- Question 2: Intent Check -->
-        <section class="screen" id="screen-q2">
-            <h2>What are you actually looking for these days?</h2>
-            <div class="options">
-                <button class="btn-option" onclick="answer('q2', 'real', 'meme-2')">Something real</button>
-                <button class="btn-option" onclick="answer('q2', 'intentional', 'meme-2')">Intentional dating, but chill</button>
-                <button class="btn-option" onclick="answer('q2', 'open', 'meme-2')">Open-minded, seeing where it goes</button>
-                <button class="btn-option" onclick="answer('q2', 'vibes', 'meme-2')">Honestly? Just vibes</button>
-            </div>
-        </section>
-
-        <!-- Meme 2 -->
-        <section class="screen meme" id="meme-2">
-            <h2>📊 Noted</h2>
-            <p class="meme-text">Adjusting expectations and making a risk assessment</p>
-            <button class="btn-primary" onclick="nextScreen('screen-q3')">Proceed with transparency</button>
-        </section>
-
-        <!-- Question 3: Availability Check -->
-        <section class="screen" id="screen-q3">
-            <h2>Be honest — are you actually open to dating right now?</h2>
-            <div class="options">
-                <button class="btn-option" onclick="answer('q3', 'yes', 'meme-3')">Yes, fully</button>
-                <button class="btn-option" onclick="answer('q3', 'mostly', 'meme-3')">Mostly yes</button>
-                <button class="btn-option" onclick="answer('q3', 'chaotic', 'meme-3')">Maybe, but I'm chaotic</button>
-                <button class="btn-option" onclick="answer('q3', 'airplane', 'meme-3')">Emotionally I'm on airplane mode</button>
-            </div>
-        </section>
-
-        <!-- Meme 3 -->
-        <section class="screen meme" id="meme-3">
-            <h2>🔍 Status Update</h2>
-            <p class="meme-text">Emotional availability detected. Investigating further.</p>
-            <button class="btn-primary" onclick="nextScreen('screen-q4')">Continue audit</button>
-        </section>
-
-        <!-- Question 4: Date Style -->
-        <section class="screen" id="screen-q4">
-            <h2>Pick your ideal first-date energy</h2>
-            <div class="options">
-                <button class="btn-option" onclick="answer('q4', 'cocktails', 'screen-q5')">Cocktails and banter</button>
-                <button class="btn-option" onclick="answer('q4', 'walk', 'screen-q5')">Coffee and a walk</button>
-                <button class="btn-option" onclick="answer('q4', 'dinner', 'screen-q5')">Dinner and dangerous eye contact</button>
-                <button class="btn-option" onclick="answer('q4', 'spontaneous', 'screen-q5')">Something spontaneous and slightly irresponsible</button>
-            </div>
-            <div class="custom-suggestion">
-                <label for="date-suggestion">Or suggest something else:</label>
-                <input type="text" id="date-suggestion" name="custom_date_idea" placeholder="Your creative date idea..." />
-                                    <button class="btn-primary" id="date-suggestion-btn" style="margin-top: 15px;" onclick="nextScreen('screen-q5')">Continue ✨</button>
-            </div>
-        </section>
-
-        <!-- Question 5: Weekend Reality -->
-        <section class="screen" id="screen-q5">
-            <h2>What does your weekend availability usually look like?</h2>
-            <div class="options">
-                <button class="btn-option" onclick="answer('q5', 'friday', 'meme-4')">Friday works</button>
-                <button class="btn-option" onclick="answer('q5', 'saturday', 'meme-4')">Saturday is elite</button>
-                <button class="btn-option" onclick="answer('q5', 'sunday', 'meme-4')">Sunday is underrated</button>
-                <button class="btn-option" onclick="answer('q5', 'conditional', 'meme-4')">I'm free, but only if I like you</button>
-            </div>
-        </section>
-
-        <!-- Meme 4 -->
-        <section class="screen meme" id="meme-4">
-            <h2>⚡ Alert</h2>
-            <p class="meme-text">Okay wait… so this might actually become plans</p>
-            <button class="btn-primary" onclick="nextScreen('screen-calendar')">Pick your window</button>
-        </section>
-
-        <!-- Calendar Screen -->
-        <section class="screen" id="screen-calendar">
-            <h2>When are you free? (Weekends only)</h2>
-            <p class="subtitle">Select all days that work for you</p>
-            <div class="calendar">
-                <label class="calendar-day">
-                    <input type="checkbox" class="date-input" name="availability" value="Friday">
-                    <span>Friday</span>
-                </label>
-                <label class="calendar-day">
-                    <input type="checkbox" class="date-input" name="availability" value="Saturday">
-                    <span>Saturday</span>
-                </label>
-                <label class="calendar-day">
-                    <input type="checkbox" class="date-input" name="availability" value="Sunday">
-                    <span>Sunday</span>
-                </label>
-            </div>
-            <button class="btn-primary" onclick="nextScreen('screen-final')">Lock it in</button>
-        </section>
-
-        <!-- Final Question -->
-        <section class="screen" id="screen-final">
-            <h2>Would you go on a date with Michael?</h2>
-            <div class="options">
-                <button class="btn-option" onclick="answer('final', 'yes', 'screen-loading')">Yes, obviously</button>
-                <button class="btn-option" onclick="answer('final', 'snacks', 'screen-loading')">Yes, but I need snacks</button>
-                <button class="btn-option" onclick="answer('final', 'convince', 'screen-loading')">Potentially, convince me</button>
-                <button class="btn-option dodgy" id="noBtn" onclick="dodgeNo()">No</button>
-            </div>
-        </section>
+        </form>
 
         <!-- Loading Screen -->
-        <section class="screen meme" id="screen-loading">
-            <h2>⏳ Calculating...</h2>
-            <p class="meme-text">Analyzing levels of charm, timing, delusion, and weekend logistics</p>
+        <section class="screen meme" id="screen-loading" style="display:none;">
+            <h2>🧪 Calculating...</h2>
+            <p class="meme-text">Analyzing levels of charm, timing, delusion, and whether you're a green flag</p>
             <div class="loader"></div>
         </section>
 
         <!-- Result Screen -->
-        <section class="screen" id="screen-result">
+        <section class="screen" id="screen-result" style="display:none;">
             <h1 class="result-title">100/100</h1>
             <h2>Compatibility Confirmed</h2>
-            <p class="result-text">A frankly suspicious result, but who are we to argue with destiny?</p>
-            <p class="result-sub">The stars, the algorithm, and several memes have spoken.</p>
+            <p class="result-text">A frankly suspicious result, but who are we to argue with science?</p>
+            <p class="result-sub">The stars, the algorithm, and several memes have aligned.</p>
             <p class="result-final">You are now cleared for one date.</p>
-            <form id="date-form" action="https://formspree.io/f/mqeylwkn" method="POST">
-                <input type="hidden" name="answers" id="answersField">
-                <input type="hidden" name="score" id="scoreField">
-                <input type="text" name="name" placeholder="Your name" required>
-                    <input type="text" name="instagram" placeholder="Your Instagram handle" required>                <button type="submit" class="btn-primary">Submit & See You Soon</button>
-            </form>
-        </section>
-
-        <!-- Thank You Screen -->
-        <section class="screen" id="thank-you">
-            <canvas id="confetti-canvas"></canvas>
             <div class="thank-you-content">
                 <h1 class="glow">🎉 You did it! 🎉</h1>
                 <h2>Congrats on not fumbling</h2>
-                <p class="result-text">Michael will review your responses and reach out soon</p>
-                    <p class="meme-text">Pro tip: He WILL stalk your Instagram before following you back 👀</p>                <img src="https://media.giphy.com/media/111ebonMs90YLu/giphy.gif" alt="Success" style="max-width: 300px; margin: 20px auto;">
+                <p class="result-text">Michael will review your responses and reach out soon.</p>
+                <p class="meme-text">Pro tip: He WILL stalk your Instagram before responding 👀</p>
             </div>
         </section>
+
+        <!-- Thank You Screen -->
+        <canvas id="confetti-canvas"></canvas>
     </div>
 
-        <!-- Background Music -->
+    <!-- Background Music -->
     <audio id="background-music" loop>
         <source src="music/it-aint-over.mp3" type="audio/mpeg">
     </audio>
-
 
     <script src="script.js"></script>
 </body>
