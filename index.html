@@ -5,6 +5,39 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>DONT FUMBLE.EXE ★ Welcome ★</title>
     <link rel="stylesheet" href="style.css" />
+    <style>
+        /* ── FIX 1: Live dot for meme-1 ── */
+        .live-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: #000;
+            color: #fff;
+            font-family: 'Comic Neue', cursive;
+            font-size: 0.75rem;
+            font-weight: 700;
+            padding: 3px 10px 3px 8px;
+            border: 2px solid #fff;
+            margin-bottom: 10px;
+            letter-spacing: 0.08em;
+        }
+        .live-dot {
+            width: 9px; height: 9px;
+            background: red;
+            border-radius: 50%;
+            animation: blink-dot 1s step-end infinite;
+            flex-shrink: 0;
+        }
+        @keyframes blink-dot {
+            0%, 100% { opacity: 1; }
+            50%       { opacity: 0; }
+        }
+
+        /* ── FIX 4: No button stays in flow until it moves ── */
+        #noBtn {
+            position: relative;
+        }
+    </style>
 </head>
 <body>
     <div id="app">
@@ -18,9 +51,7 @@
                 <div class="title-bar">
                     <span class="title-bar-text">🎵 audio_setup.exe</span>
                     <div class="title-bar-btns">
-                        <span class="tb-btn">_</span>
-                        <span class="tb-btn">□</span>
-                        <span class="tb-btn">✕</span>
+                        <span class="tb-btn">_</span><span class="tb-btn">□</span><span class="tb-btn">✕</span>
                     </div>
                 </div>
                 <div class="win-body">
@@ -48,9 +79,7 @@
                 <div class="title-bar">
                     <span class="title-bar-text">💘 dont_fumble.exe — Welcome</span>
                     <div class="title-bar-btns">
-                        <span class="tb-btn">_</span>
-                        <span class="tb-btn">□</span>
-                        <span class="tb-btn">✕</span>
+                        <span class="tb-btn">_</span><span class="tb-btn">□</span><span class="tb-btn">✕</span>
                     </div>
                 </div>
                 <div class="win-body">
@@ -71,9 +100,7 @@
                 <div class="title-bar">
                     <span class="title-bar-text">⚠️ legal_notice.txt — Notepad</span>
                     <div class="title-bar-btns">
-                        <span class="tb-btn">_</span>
-                        <span class="tb-btn">□</span>
-                        <span class="tb-btn">✕</span>
+                        <span class="tb-btn">_</span><span class="tb-btn">□</span><span class="tb-btn">✕</span>
                     </div>
                 </div>
                 <div class="win-body">
@@ -96,9 +123,7 @@
                 <div class="title-bar">
                     <span class="title-bar-text">❓ query_01.exe — Vibe Check</span>
                     <div class="title-bar-btns">
-                        <span class="tb-btn">_</span>
-                        <span class="tb-btn">□</span>
-                        <span class="tb-btn">✕</span>
+                        <span class="tb-btn">_</span><span class="tb-btn">□</span><span class="tb-btn">✕</span>
                     </div>
                 </div>
                 <div class="win-body">
@@ -113,19 +138,21 @@
             </div>
         </section>
 
-        <!-- ── MEME 1 ── -->
+        <!-- ── MEME 1 — FIX 1: live dot added ── -->
         <section class="screen meme" id="meme-1">
             <div class="win-box">
                 <div class="title-bar">
                     <span class="title-bar-text">🔍 system_log.txt</span>
                     <div class="title-bar-btns">
-                        <span class="tb-btn">_</span>
-                        <span class="tb-btn">□</span>
-                        <span class="tb-btn">✕</span>
+                        <span class="tb-btn">_</span><span class="tb-btn">□</span><span class="tb-btn">✕</span>
                     </div>
                 </div>
                 <div class="win-body">
-                    <h2>🔍 LIVE FOOTAGE</h2>
+                    <!-- Live badge with blinking dot -->
+                    <div style="display:flex; justify-content:center; margin-bottom: 6px;">
+                        <span class="live-badge"><span class="live-dot"></span> LIVE</span>
+                    </div>
+                    <h2>LIVE FOOTAGE</h2>
                     <p class="meme-text">Of a woman making a bold but potentially rewarding decision</p>
                     <img src="https://media0.giphy.com/media/XWwIzh5GIWWf6/giphy.gif" alt="Well that escalated" style="max-width: 280px; display: block; margin: 8px auto 16px; border: 3px solid; border-color: #fff #555 #555 #fff; box-shadow: 3px 3px 0 #000;">
                     <button class="btn-primary" onclick="nextScreen('screen-q2')">Continue investigation &gt;&gt;</button>
@@ -139,9 +166,7 @@
                 <div class="title-bar">
                     <span class="title-bar-text">❓ query_02.exe — Intent Scan</span>
                     <div class="title-bar-btns">
-                        <span class="tb-btn">_</span>
-                        <span class="tb-btn">□</span>
-                        <span class="tb-btn">✕</span>
+                        <span class="tb-btn">_</span><span class="tb-btn">□</span><span class="tb-btn">✕</span>
                     </div>
                 </div>
                 <div class="win-body">
@@ -162,9 +187,7 @@
                 <div class="title-bar">
                     <span class="title-bar-text">📊 risk_assessment.exe</span>
                     <div class="title-bar-btns">
-                        <span class="tb-btn">_</span>
-                        <span class="tb-btn">□</span>
-                        <span class="tb-btn">✕</span>
+                        <span class="tb-btn">_</span><span class="tb-btn">□</span><span class="tb-btn">✕</span>
                     </div>
                 </div>
                 <div class="win-body">
@@ -182,9 +205,7 @@
                 <div class="title-bar">
                     <span class="title-bar-text">❓ query_03.exe — Availability Scan</span>
                     <div class="title-bar-btns">
-                        <span class="tb-btn">_</span>
-                        <span class="tb-btn">□</span>
-                        <span class="tb-btn">✕</span>
+                        <span class="tb-btn">_</span><span class="tb-btn">□</span><span class="tb-btn">✕</span>
                     </div>
                 </div>
                 <div class="win-body">
@@ -205,9 +226,7 @@
                 <div class="title-bar">
                     <span class="title-bar-text">🔍 status_update.log</span>
                     <div class="title-bar-btns">
-                        <span class="tb-btn">_</span>
-                        <span class="tb-btn">□</span>
-                        <span class="tb-btn">✕</span>
+                        <span class="tb-btn">_</span><span class="tb-btn">□</span><span class="tb-btn">✕</span>
                     </div>
                 </div>
                 <div class="win-body">
@@ -219,29 +238,19 @@
             </div>
         </section>
 
-        <!-- ── Q4 ── -->
+        <!-- ── Q4 — FIX 3: JFK meme + IYKYK ── -->
         <section class="screen" id="screen-q4">
             <div class="win-box">
                 <div class="title-bar">
                     <span class="title-bar-text">❓ query_04.exe — Date Protocol</span>
                     <div class="title-bar-btns">
-                        <span class="tb-btn">_</span>
-                        <span class="tb-btn">□</span>
-                        <span class="tb-btn">✕</span>
+                        <span class="tb-btn">_</span><span class="tb-btn">□</span><span class="tb-btn">✕</span>
                     </div>
                 </div>
                 <div class="win-body">
                     <h2>QUESTION 4 OF 5<br>Pick your ideal first-date energy</h2>
-
-                    <!--
-                        YOUR JFK JR / CB MEME GOES HERE:
-                        1. Make it at imgflip.com/memegenerator
-                        2. Upload to your GitHub repo
-                        3. Replace src below with your filename e.g. src="jfk-meme.jpg"
-                    -->
-                    <img src="https://media.giphy.com/media/111ebonMs90YLu/giphy.gif" alt="Could be you" style="max-width: 240px; display: block; margin: 0 auto 16px; border: 3px solid; border-color: #fff #555 #555 #fff; box-shadow: 3px 3px 0 #000;">
-                    <p style="font-size:0.72rem; color:#888; margin-top:-10px; margin-bottom:14px; font-style:italic;">← replace with your JFK Jr / CB meme!</p>
-
+                    <img src="jfk-meme.png" alt="Me & Could Be You" style="max-width: 340px; display: block; margin: 0 auto 6px; border: 3px solid; border-color: #fff #555 #555 #fff; box-shadow: 3px 3px 0 #000;">
+                    <p style="font-size:0.78rem; color:#800080; font-weight:700; font-style:italic; margin-top:0; margin-bottom:16px;">IYKYK 😏</p>
                     <div class="options">
                         <button class="btn-option" onclick="answer('q4', 'cocktails', 'screen-q5')">🍸 Cocktails and banter</button>
                         <button class="btn-option" onclick="answer('q4', 'walk', 'screen-q5')">☕ Coffee and a walk</button>
@@ -263,9 +272,7 @@
                 <div class="title-bar">
                     <span class="title-bar-text">❓ query_05.exe — Schedule Scan</span>
                     <div class="title-bar-btns">
-                        <span class="tb-btn">_</span>
-                        <span class="tb-btn">□</span>
-                        <span class="tb-btn">✕</span>
+                        <span class="tb-btn">_</span><span class="tb-btn">□</span><span class="tb-btn">✕</span>
                     </div>
                 </div>
                 <div class="win-body">
@@ -286,9 +293,7 @@
                 <div class="title-bar">
                     <span class="title-bar-text">⚡ alert.exe — CRITICAL</span>
                     <div class="title-bar-btns">
-                        <span class="tb-btn">_</span>
-                        <span class="tb-btn">□</span>
-                        <span class="tb-btn">✕</span>
+                        <span class="tb-btn">_</span><span class="tb-btn">□</span><span class="tb-btn">✕</span>
                     </div>
                 </div>
                 <div class="win-body">
@@ -306,9 +311,7 @@
                 <div class="title-bar">
                     <span class="title-bar-text">📅 schedule.exe — Select Dates</span>
                     <div class="title-bar-btns">
-                        <span class="tb-btn">_</span>
-                        <span class="tb-btn">□</span>
-                        <span class="tb-btn">✕</span>
+                        <span class="tb-btn">_</span><span class="tb-btn">□</span><span class="tb-btn">✕</span>
                     </div>
                 </div>
                 <div class="win-body">
@@ -333,15 +336,13 @@
             </div>
         </section>
 
-        <!-- ── FINAL QUESTION ── -->
+        <!-- ── FINAL QUESTION — FIX 4: No starts in flow, only last position clickable ── -->
         <section class="screen" id="screen-final">
             <div class="win-box">
                 <div class="title-bar">
                     <span class="title-bar-text">💘 final_query.exe — THE BIG ONE</span>
                     <div class="title-bar-btns">
-                        <span class="tb-btn">_</span>
-                        <span class="tb-btn">□</span>
-                        <span class="tb-btn">✕</span>
+                        <span class="tb-btn">_</span><span class="tb-btn">□</span><span class="tb-btn">✕</span>
                     </div>
                 </div>
                 <div class="win-body">
@@ -350,7 +351,7 @@
                         <button class="btn-option" onclick="answer('final', 'yes', 'screen-loading')">😍 Yes, obviously</button>
                         <button class="btn-option" onclick="answer('final', 'snacks', 'screen-loading')">🍿 Yes, but I need snacks</button>
                         <button class="btn-option" onclick="answer('final', 'convince', 'screen-loading')">🤔 Potentially, convince me</button>
-                        <!-- onmouseover = runs away BEFORE click -->
+                        <!-- Starts in flow, moves on hover, only clickable after max dodges -->
                         <button class="btn-option dodgy" id="noBtn" onmouseover="dodgeNo()">🚫 No</button>
                     </div>
                 </div>
@@ -363,9 +364,7 @@
                 <div class="title-bar">
                     <span class="title-bar-text">⏳ processing.exe — Please Wait</span>
                     <div class="title-bar-btns">
-                        <span class="tb-btn">_</span>
-                        <span class="tb-btn">□</span>
-                        <span class="tb-btn">✕</span>
+                        <span class="tb-btn">_</span><span class="tb-btn">□</span><span class="tb-btn">✕</span>
                     </div>
                 </div>
                 <div class="win-body">
@@ -390,9 +389,7 @@
                 <div class="title-bar">
                     <span class="title-bar-text">✅ result.exe — Compatibility Report</span>
                     <div class="title-bar-btns">
-                        <span class="tb-btn">_</span>
-                        <span class="tb-btn">□</span>
-                        <span class="tb-btn">✕</span>
+                        <span class="tb-btn">_</span><span class="tb-btn">□</span><span class="tb-btn">✕</span>
                     </div>
                 </div>
                 <div class="win-body">
@@ -414,7 +411,7 @@
             </div>
         </section>
 
-        <!-- ── THANK YOU ── -->
+        <!-- ── THANK YOU — FIX 5: new pro tip ── -->
         <section class="screen" id="thank-you">
             <canvas id="confetti-canvas"></canvas>
             <div class="thank-you-content">
@@ -425,26 +422,25 @@
                     <div class="title-bar">
                         <span class="title-bar-text">🎉 success.exe — Mission Complete!</span>
                         <div class="title-bar-btns">
-                            <span class="tb-btn">_</span>
-                            <span class="tb-btn">□</span>
-                            <span class="tb-btn">✕</span>
+                            <span class="tb-btn">_</span><span class="tb-btn">□</span><span class="tb-btn">✕</span>
                         </div>
                     </div>
                     <div class="win-body">
                         <h1 class="glow">YOU DID IT!! 🎉</h1>
                         <h2>Congrats on not fumbling 😌</h2>
                         <div class="inset">
-                            Michael will review your responses and reach out soon 💌<br><br>
-                            Pro tip: He WILL stalk your Instagram before following you back 👀
+                            Michael will be in touch soon 💌<br><br>
+                            🏆 Fun fact: You just completed a 9-screen obstacle course<br>
+                            designed by a man who googled "how to talk to women" 😭<br>
+                            You deserve a medal. And also probably a drink.
                         </div>
-                        <img src="https://media.giphy.com/media/111ebonMs90YLu/giphy.gif" alt="Success">
+                        <img src="https://media.giphy.com/media/111ebonMs90YLu/giphy.gif" alt="Success" style="max-width: 280px; display: block; margin: 16px auto; border: 3px solid; border-color: #fff #555 #555 #fff; box-shadow: 3px 3px 0 #000;">
                     </div>
                 </div>
             </div>
         </section>
 
     </div>
-
     <script src="script.js"></script>
 </body>
 </html>
