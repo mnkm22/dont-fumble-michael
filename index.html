@@ -33,23 +33,26 @@
             50%       { opacity: 0; }
         }
 
-        /* ── Music toggle above window ── */
+        /* ── No button stays in flow ── */
+        #noBtn { position: relative; }
+
+        /* ── Music toggle sits above the win-box ── */
+        .win-container { position: relative; max-width: 620px; width: 100%; }
         #music-toggle {
             display: none;
-            position: fixed;
-            top: 8px;
-            right: 8px;
+            position: absolute;
+            top: -34px;
+            right: 0;
             background: var(--silver);
             border: 3px solid;
             border-color: var(--bevel-lt) var(--bevel-dk) var(--bevel-dk) var(--bevel-lt);
             box-shadow: 2px 2px 0 #000;
             cursor: pointer;
-            font-size: 0.8rem;
+            font-size: 0.78rem;
             font-family: 'Comic Neue', cursive;
             font-weight: 700;
             color: #000080;
             padding: 4px 10px;
-            z-index: 9999;
             white-space: nowrap;
         }
         #music-toggle:active {
@@ -100,7 +103,9 @@
                     <span class="marquee-inner">💘 YOU HAVE MATCHED WITH MICHAEL 💘 DON'T BLOW IT 💘 THIS SITE IS HOT OFF THE PRESS 💘 TELL YOUR FRIENDS 💘 &nbsp;&nbsp;&nbsp; 💘 YOU HAVE MATCHED WITH MICHAEL 💘 DON'T BLOW IT 💘 THIS SITE IS HOT OFF THE PRESS 💘 TELL YOUR FRIENDS 💘</span>
                 </div>
             </div>
-            <div class="win-box">
+            <div class="win-container">
+                <button id="music-toggle" onclick="toggleMusic()" title="Toggle music">♪ music</button>
+                <div class="win-box">
                 <div class="title-bar">
                     <span class="title-bar-text">💘 dont_fumble.exe — Welcome</span>
                     <div class="title-bar-btns">
@@ -116,6 +121,7 @@
                     </div>
                     <button class="btn-primary" onclick="nextScreen('screen-disclaimer')">Enter the portal &gt;&gt;</button>
                 </div>
+            </div>
             </div>
         </section>
 
