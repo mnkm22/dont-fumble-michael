@@ -1,130 +1,62 @@
-// Store user answers and score
-const userData = {
-    answers: {},
-    score: 0
-};
-
-// Screen navigation
-function nextScreen(screenId) {
-    const currentScreen = document.querySelector('.screen.active');
-    const nextScreen = document.getElementById(screenId);
-
-    if (currentScreen) currentScreen.classList.remove('active');
-    if (nextScreen) nextScreen.classList.add('active');
-
-    window.scrollTo(0, 0);
-}
-
-// Background music handler
-function startMusic(playMusic) {
-    const audio = document.getElementById('background-music');
-    
-    if (playMusic && audio) {
-        audio.play().catch(err => console.log('Audio play failed:', err));
-    }
-    
-    // Navigate to hero screen
-    nextScreen('screen-hero');
-}
-
-// Answer handler with scoring
-function answer(question, value, nextScreenId) {
-    userData.answers[question] = value;
-        
-    let points = 0;
-
-    // Question 2: Intent (high weight)
-    if (question === 'q2') {
-        if (value === 'real') points = 30;
-        else if (value === 'intentional') points = 25;
-        else if (value === 'open') points = 15;
-        else points = 5;
-    }
-
-    // Question 3: Availability (high weight)
-    if (question === 'q3') {
-        if (value === 'yes') points = 30;
-        else if (value === 'mostly') points = 20;
-        else if (value === 'chaotic') points = 10;
-        else points = 0;
-    }
-
-    // Question 4: Date style (medium weight)
-    if (question === 'q4') {
-        points = 15;
-    }
-
-    // Question 5: Weekend preference (medium weight)
-    if (question === 'q5') {
-        if (value === 'conditional') points = 5;
-        else points = 15;
-    }
-
-    // Question 6: First date (low weight)
-    if (question === 'q6') {
-        points = 10;
-    }
-
-    userData.score += points;
-        
-    // Navigate to the next screen
-    if (nextScreenId) {
-        nextScreen(nextScreenId);
-    }
-}
-
-// Date input handlers
-const dateInputs = document.querySelectorAll('.date-input');
-dateInputs.forEach(input => {
-    input.addEventListener('change', () => {
-        const selectedDates = Array.from(dateInputs)
-            .filter(inp => inp.checked)
-            .map(inp => inp.value);
-        userData.answers.dates = selectedDates;
-    });
-});
-
-// Form submission with Formspree
+// Form submission handler
 const form = document.getElementById('date-form');
+const loadingScreen = document.getElementById('screen-loading');
+const resultScreen = document.getElementById('screen-result');
+
+// Handle form submission
 if (form) {
-    form.addEventListener('submit', async (e) => {
+    form.addEventListener('submit', function(e) {
         e.preventDefault();
         
+        // Collect all answers
         const formData = new FormData(form);
+        const answers = {};
         
-        // Add stored answers to form data
-        for (let key in userData.answers) {
-            if (key === 'dates') {
-                formData.append(key, userData.answers[key].join(', '));
-            } else {
-                formData.append(key, userData.answers[key]);
+        for (let [key, value] of formData.entries()) {
+            if (key.startsWith('q') || key === 'custom_date_idea' || key === 'availability' || key === 'name' || key === 'instagram') {
+                answers[key] = value;
             }
         }
         
-        try {
-            const response = await fetch(form.action, {
+        // Set the answers field
+        document.getElementById('answersField').value = JSON.stringify(answers);
+        
+        // Hide form and show loading screen
+        form.style.display = 'none';
+        document.querySelector('.hero-section').style.display = 'none';
+        loadingScreen.style.display = 'block';
+        
+        // Simulate calculation time
+        setTimeout(() => {
+            // Submit the form to Formspree
+            const formDataToSubmit = new FormData(form);
+            
+            fetch(form.action, {
                 method: 'POST',
-                body: formData,
+                body: formDataToSubmit,
                 headers: {
                     'Accept': 'application/json'
                 }
+            }).then(response => {
+                // Hide loading, show result
+                loadingScreen.style.display = 'none';
+                resultScreen.style.display = 'block';
+                
+                // Trigger confetti
+                createConfetti();
+            }).catch(error => {
+                console.log('Form submission error:', error);
+                // Still show result screen even if submission fails
+                loadingScreen.style.display = 'none';
+                resultScreen.style.display = 'block';
+                createConfetti();
             });
-            
-            if (response.ok) {
-                // Show custom thank you screen instead of redirecting
-                nextScreen('thank-you');
-                startConfetti();
-            } else {
-                alert('Oops! Something went wrong. Try again?');
-            }
-        } catch (error) {
-            alert('Oops! Something went wrong. Try again?');
-        }
+        }, 3000);
     });
 }
 
-// Confetti animation for thank you screen
-function startConfetti() {
+// Confetti animation
+function createConfetti() {
     const canvas = document.getElementById('confetti-canvas');
     if (!canvas) return;
     
@@ -132,121 +64,67 @@ function startConfetti() {
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
     
-    const confetti = [];
+    const confettiPieces = [];
     const confettiCount = 150;
-    const colors = ['#ff0a54', '#ff477e', '#ff7096', '#ff85a1', '#fbb1bd', '#f9bec7'];
+    const colors = ['#ff6b6b', '#4ecdc4', '#45b7d1', '#f9ca24', '#6c5ce7', '#a29bfe', '#fd79a8'];
+    
+    class ConfettiPiece {
+        constructor() {
+            this.x = Math.random() * canvas.width;
+            this.y = Math.random() * canvas.height - canvas.height;
+            this.size = Math.random() * 10 + 5;
+            this.speedY = Math.random() * 3 + 2;
+            this.speedX = Math.random() * 2 - 1;
+            this.color = colors[Math.floor(Math.random() * colors.length)];
+            this.rotation = Math.random() * 360;
+            this.rotationSpeed = Math.random() * 10 - 5;
+        }
+        
+        update() {
+            this.y += this.speedY;
+            this.x += this.speedX;
+            this.rotation += this.rotationSpeed;
+            
+            if (this.y > canvas.height) {
+                this.y = -10;
+                this.x = Math.random() * canvas.width;
+            }
+        }
+        
+        draw() {
+            ctx.save();
+            ctx.translate(this.x, this.y);
+            ctx.rotate(this.rotation * Math.PI / 180);
+            ctx.fillStyle = this.color;
+            ctx.fillRect(-this.size / 2, -this.size / 2, this.size, this.size);
+            ctx.restore();
+        }
+    }
     
     for (let i = 0; i < confettiCount; i++) {
-        confetti.push({
-            x: Math.random() * canvas.width,
-            y: Math.random() * canvas.height - canvas.height,
-            r: Math.random() * 6 + 4,
-            d: Math.random() * confettiCount,
-            color: colors[Math.floor(Math.random() * colors.length)],
-            tilt: Math.random() * 10 - 10,
-            tiltAngleIncremental: Math.random() * 0.07 + 0.05,
-            tiltAngle: 0
-        });
+        confettiPieces.push(new ConfettiPiece());
     }
     
-    function draw() {
+    function animate() {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         
-        confetti.forEach((c, i) => {
-            ctx.beginPath();
-            ctx.lineWidth = c.r / 2;
-            ctx.strokeStyle = c.color;
-            ctx.moveTo(c.x + c.tilt + c.r, c.y);
-            ctx.lineTo(c.x + c.tilt, c.y + c.tilt + c.r);
-            ctx.stroke();
+        confettiPieces.forEach(piece => {
+            piece.update();
+            piece.draw();
         });
         
-        update();
+        requestAnimationFrame(animate);
     }
     
-    function update() {
-        confetti.forEach((c, i) => {
-            c.tiltAngle += c.tiltAngleIncremental;
-            c.y += (Math.cos(c.d) + 3 + c.r / 2) / 2;
-            c.tilt = Math.sin(c.tiltAngle - i / 3) * 15;
-            
-            if (c.y > canvas.height) {
-                confetti[i] = {
-                    x: Math.random() * canvas.width,
-                    y: -10,
-                    r: c.r,
-                    d: c.d,
-                    color: c.color,
-                    tilt: c.tilt,
-                    tiltAngleIncremental: c.tiltAngleIncremental,
-                    tiltAngle: c.tiltAngle
-                };
-            }
-        });
-    }
-    
-    setInterval(draw, 33);
+    animate();
 }
 
-// Dodge No button functionality
-// Track number of dodges
-let dodgeCount = 0;
-
-function dodgeNo() {
-        // Only dodge three times, then allow click        if (dodgeCount >= 3) {        answer('final', 'no-means-yes', 'screen-loading');
-        return;
-    }
-    
-    dodgeCount++;
-    
-    const noBtn = document.getElementById('noBtn');
-    const randomX = Math.random() * (window.innerWidth - 200);
-    const randomY = Math.random() * (window.innerHeight - 100);
-    
-    noBtn.style.position = 'fixed';
-    noBtn.style.left = randomX + 'px';
-    noBtn.style.top = randomY + 'px';
-    noBtn.style.transition = 'all 0.3s ease';
-}
-
-// Auto-advance from loading screen to result screen
-const loadingScreen = document.getElementById('screen-loading');
-if (loadingScreen) {
-    // Detect when loading screen becomes active
-    const observer = new MutationObserver((mutations) => {
-        mutations.forEach((mutation) => {
-            if (mutation.target.classList.contains('active')) {
-                // Wait 3 seconds then show result screen
-                setTimeout(() => {
-                    nextScreen('screen-result');
-                }, 3000);
-            }
-        });
-    });
-    
-    observer.observe(loadingScreen, {
-        attributes: true,
-        attributeFilter: ['class']
-    });
-}
-
-
-// Dopamine hit - quick celebration when answering
-function celebrate() {
-    const emojis = ['✨', '👏', '🚀', '🎉', '💯', '⭐', '🔥'];
-    const emoji = emojis[Math.floor(Math.random() * emojis.length)];
-    
-    const celebration = document.createElement('div');
-    celebration.textContent = emoji;
-    celebration.style.position = 'fixed';
-    celebration.style.fontSize = '40px';
-    celebration.style.left = Math.random() * window.innerWidth + 'px';
-    celebration.style.top = '50%';
-    celebration.style.zIndex = '10000';
-    celebration.style.pointerEvents = 'none';
-    celebration.style.animation = 'float-up 1s ease-out';
-    
-    document.body.appendChild(celebration);
-    
-    setTimeout(() => celebration.remove(), 1000);
+// Background music (optional - can be removed if not using)
+const backgroundMusic = document.getElementById('background-music');
+if (backgroundMusic) {
+    // Auto-play is usually blocked by browsers, so this is optional
+    document.addEventListener('click', function playMusic() {
+        backgroundMusic.play().catch(err => console.log('Audio play prevented:', err));
+        document.removeEventListener('click', playMusic);
+    }, { once: true });
 }
