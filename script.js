@@ -16,18 +16,16 @@ function nextScreen(screenId) {
 // A floating ♪ toggle button appears on every screen after the first —
 // this gives the user a visible way to start/stop music at any time,
 // which also acts as a fallback if autoplay was silently blocked.
-const bgMusic = new Audio('music/it-aint-over.mp3');
-bgMusic.loop = true;
-bgMusic.volume = 0.75;
-
+let bgMusic = null;
 let musicEnabled = false;
 
 function startMusic(play) {
     musicEnabled = play;
     if (play) {
-        bgMusic.play().catch(() => {
-            // Blocked silently — the floating button will let them retry
-        });
+        bgMusic = new Audio('music/it-aint-over.mp3');
+        bgMusic.loop = true;
+        bgMusic.volume = 0.75;
+        bgMusic.play();
     }
     showMusicToggle();
     nextScreen('screen-hero');
