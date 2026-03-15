@@ -3,198 +3,301 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>So you matched with Michael</title>
+    <title>DONT.FUMBLE.EXE</title>
     <link rel="stylesheet" href="style.css" />
 </head>
 <body>
     <div id="app">
 
-        <!-- Music Choice Screen -->
+        <!-- ── MUSIC CHOICE ── -->
         <section class="screen active" id="screen-music">
-            <h2>🎵 Background Music?</h2>
-            <p>Would you like some vibes while you navigate this experience?</p>
-            <div class="options">
-                <button class="btn-option" onclick="startMusic(true)">Yes, play the music ✨</button>
-                <button class="btn-option" onclick="startMusic(false)">No thanks, keep it quiet</button>
+            <div class="sys-frame" data-label="audio_config.exe">
+                <div class="corner tl"></div><div class="corner tr"></div>
+                <div class="corner bl"></div><div class="corner br"></div>
+                <div class="warning-header">⚠ AUDIO SYSTEM ⚠</div>
+                <h2>Enable background soundtrack?</h2>
+                <div class="sys-readout">
+                    <span class="label">FILE: </span><span class="value">it-aint-over.mp3</span><br>
+                    <span class="label">STATUS: </span><span class="value blink">AWAITING INPUT_</span>
+                </div>
+                <div class="options">
+                    <button class="btn-option" onclick="startMusic(true)">YES — PLAY THE MUSIC</button>
+                    <button class="btn-option" onclick="startMusic(false)">NO — KEEP IT SILENT</button>
+                </div>
             </div>
         </section>
 
-        <!-- Hero Screen -->
+        <!-- ── HERO ── -->
         <section class="screen" id="screen-hero">
-            <h1>Well well well, what do we have here?</h1>
-            <p>Choose carefully. Some paths may lead to banter, drinks, and unforeseen chemistry.</p>
-            <button class="btn-primary" onclick="nextScreen('screen-disclaimer')">Enter the portal</button>
+            <div class="sys-frame" data-label="dont_fumble.exe">
+                <div class="corner tl"></div><div class="corner tr"></div>
+                <div class="corner bl"></div><div class="corner br"></div>
+                <h1>DONT<br>FUMBLE</h1>
+                <div class="sys-readout">
+                    <span class="label">MISSION: </span><span class="value">Secure the bag. Plan the date.</span><br>
+                    <span class="label">WARNING: </span><span class="value">Some paths lead to banter &amp; chemistry</span><br>
+                    <span class="label">RISK LEVEL: </span><span class="value blink">HIGH_</span>
+                </div>
+                <button class="btn-primary" onclick="nextScreen('screen-disclaimer')">ENTER THE PORTAL</button>
+            </div>
         </section>
 
-        <!-- Disclaimer Screen -->
+        <!-- ── DISCLAIMER ── -->
         <section class="screen" id="screen-disclaimer">
-            <h2>⚠️ Legal Notice</h2>
-            <p>This is not a test, but your answers will absolutely be judged in a fun and attractive way.</p>
-            <button class="btn-primary" onclick="nextScreen('screen-q1')">I accept the risk</button>
+            <div class="sys-frame" data-label="terms_of_service.txt">
+                <div class="corner tl"></div><div class="corner tr"></div>
+                <div class="corner bl"></div><div class="corner br"></div>
+                <div class="warning-header">⚠ LEGAL NOTICE ⚠</div>
+                <div class="sys-readout">
+                    <span class="label">NOTICE: </span><span class="value">This is not a test.</span><br>
+                    <span class="label">CLAUSE 1: </span><span class="value">Your answers WILL be judged.</span><br>
+                    <span class="label">CLAUSE 2: </span><span class="value">In a fun and attractive way.</span><br>
+                    <span class="label">LIABILITY: </span><span class="value">You accepted this by swiping right.</span>
+                </div>
+                <button class="btn-primary" onclick="nextScreen('screen-q1')">I ACCEPT THE RISK</button>
+            </div>
         </section>
 
-        <!-- Question 1: Vibe Check -->
+        <!-- ── Q1: VIBE CHECK ── -->
         <section class="screen" id="screen-q1">
-            <h2>What was the initial reason you matched?</h2>
-            <div class="options">
-                <button class="btn-option" onclick="answer('q1', 'fun', 'meme-1')">He seems fun</button>
-                <button class="btn-option" onclick="answer('q1', 'trouble', 'meme-1')">He seems like trouble, but the manageable kind</button>
-                <button class="btn-option" onclick="answer('q1', 'vibe', 'meme-1')">I believe in the power of a strong vibe</button>
-                <button class="btn-option" onclick="answer('q1', 'instinct', 'meme-1')">I acted on instinct and now I'm here</button>
+            <div class="sys-frame" data-label="query_01.exe // VIBE CHECK">
+                <div class="corner tl"></div><div class="corner tr"></div>
+                <div class="corner bl"></div><div class="corner br"></div>
+                <h2>// QUERY_01<br>What was the initial reason you matched?</h2>
+                <div class="options">
+                    <button class="btn-option" onclick="answer('q1', 'fun', 'meme-1')">He seems fun</button>
+                    <button class="btn-option" onclick="answer('q1', 'trouble', 'meme-1')">He seems like trouble — the manageable kind</button>
+                    <button class="btn-option" onclick="answer('q1', 'vibe', 'meme-1')">I believe in the power of a strong vibe</button>
+                    <button class="btn-option" onclick="answer('q1', 'instinct', 'meme-1')">I acted on instinct and now I'm here</button>
+                </div>
             </div>
         </section>
 
-        <!-- Meme 1 -->
+        <!-- ── MEME 1 ── -->
         <section class="screen meme" id="meme-1">
-            <h2>🔍 Live footage</h2>
-            <p class="meme-text">Of a woman making a bold but potentially rewarding decision</p>
-            <button class="btn-primary" onclick="nextScreen('screen-q2')">Continue investigation</button>
+            <div class="sys-frame" data-label="system_log.txt">
+                <div class="corner tl"></div><div class="corner tr"></div>
+                <div class="corner bl"></div><div class="corner br"></div>
+                <h2>// LIVE FOOTAGE</h2>
+                <p class="meme-text">Of a woman making a bold but potentially rewarding decision</p>
+                <img src="https://media0.giphy.com/media/XWwIzh5GIWWf6/giphy.gif" alt="Well that escalated quickly" style="max-width: 300px; border-radius: 4px; margin: 10px auto 20px; display: block; border: 1px solid #00ff4144;">
+                <button class="btn-primary" onclick="nextScreen('screen-q2')">CONTINUE INVESTIGATION</button>
+            </div>
         </section>
 
-        <!-- Question 2: Intent Check -->
+        <!-- ── Q2: INTENT ── -->
         <section class="screen" id="screen-q2">
-            <h2>What are you actually looking for these days?</h2>
-            <div class="options">
-                <button class="btn-option" onclick="answer('q2', 'real', 'meme-2')">Something real</button>
-                <button class="btn-option" onclick="answer('q2', 'intentional', 'meme-2')">Intentional dating, but chill</button>
-                <button class="btn-option" onclick="answer('q2', 'open', 'meme-2')">Open-minded, seeing where it goes</button>
-                <button class="btn-option" onclick="answer('q2', 'vibes', 'meme-2')">Honestly? Just vibes</button>
+            <div class="sys-frame" data-label="query_02.exe // INTENT SCAN">
+                <div class="corner tl"></div><div class="corner tr"></div>
+                <div class="corner bl"></div><div class="corner br"></div>
+                <h2>// QUERY_02<br>What are you actually looking for these days?</h2>
+                <div class="options">
+                    <button class="btn-option" onclick="answer('q2', 'real', 'meme-2')">Something real</button>
+                    <button class="btn-option" onclick="answer('q2', 'intentional', 'meme-2')">Intentional dating, but chill</button>
+                    <button class="btn-option" onclick="answer('q2', 'open', 'meme-2')">Open-minded, seeing where it goes</button>
+                    <button class="btn-option" onclick="answer('q2', 'vibes', 'meme-2')">Honestly? Just vibes</button>
+                </div>
             </div>
         </section>
 
-        <!-- Meme 2 -->
+        <!-- ── MEME 2 ── -->
         <section class="screen meme" id="meme-2">
-            <h2>📊 Noted</h2>
-            <p class="meme-text">Adjusting expectations and making a risk assessment</p>
-            <button class="btn-primary" onclick="nextScreen('screen-q3')">Proceed with transparency</button>
+            <div class="sys-frame" data-label="risk_assessment.exe">
+                <div class="corner tl"></div><div class="corner tr"></div>
+                <div class="corner bl"></div><div class="corner br"></div>
+                <h2>// NOTED</h2>
+                <p class="meme-text">Adjusting expectations and running risk assessment</p>
+                <img src="https://media2.giphy.com/media/WRQBXSCnEFJIuxktnw/giphy.gif" alt="Calculating" style="max-width: 300px; border-radius: 4px; margin: 10px auto 20px; display: block; border: 1px solid #00ff4144;">
+                <button class="btn-primary" onclick="nextScreen('screen-q3')">PROCEED WITH TRANSPARENCY</button>
+            </div>
         </section>
 
-        <!-- Question 3: Availability Check -->
+        <!-- ── Q3: AVAILABILITY ── -->
         <section class="screen" id="screen-q3">
-            <h2>Be honest — are you actually open to dating right now?</h2>
-            <div class="options">
-                <button class="btn-option" onclick="answer('q3', 'yes', 'meme-3')">Yes, fully</button>
-                <button class="btn-option" onclick="answer('q3', 'mostly', 'meme-3')">Mostly yes</button>
-                <button class="btn-option" onclick="answer('q3', 'chaotic', 'meme-3')">Maybe, but I'm chaotic</button>
-                <button class="btn-option" onclick="answer('q3', 'airplane', 'meme-3')">Emotionally I'm on airplane mode</button>
+            <div class="sys-frame" data-label="query_03.exe // AVAILABILITY SCAN">
+                <div class="corner tl"></div><div class="corner tr"></div>
+                <div class="corner bl"></div><div class="corner br"></div>
+                <h2>// QUERY_03<br>Be honest — are you actually open to dating right now?</h2>
+                <div class="options">
+                    <button class="btn-option" onclick="answer('q3', 'yes', 'meme-3')">Yes, fully</button>
+                    <button class="btn-option" onclick="answer('q3', 'mostly', 'meme-3')">Mostly yes</button>
+                    <button class="btn-option" onclick="answer('q3', 'chaotic', 'meme-3')">Maybe, but I'm chaotic</button>
+                    <button class="btn-option" onclick="answer('q3', 'airplane', 'meme-3')">Emotionally I'm on airplane mode</button>
+                </div>
             </div>
         </section>
 
-        <!-- Meme 3 -->
+        <!-- ── MEME 3 ── -->
         <section class="screen meme" id="meme-3">
-            <h2>🔍 Status Update</h2>
-            <p class="meme-text">Emotional availability detected. Investigating further.</p>
-            <button class="btn-primary" onclick="nextScreen('screen-q4')">Continue audit</button>
+            <div class="sys-frame" data-label="status_update.log">
+                <div class="corner tl"></div><div class="corner tr"></div>
+                <div class="corner bl"></div><div class="corner br"></div>
+                <h2>// STATUS UPDATE</h2>
+                <p class="meme-text">Emotional availability detected. Investigating further.</p>
+                <img src="https://media0.giphy.com/media/3o6Yg4GUVgIUg3bf7W/giphy.gif" alt="Investigating" style="max-width: 300px; border-radius: 4px; margin: 10px auto 20px; display: block; border: 1px solid #00ff4144;">
+                <button class="btn-primary" onclick="nextScreen('screen-q4')">CONTINUE AUDIT</button>
+            </div>
         </section>
 
-        <!-- Question 4: Date Style -->
+        <!-- ── Q4: DATE STYLE ── -->
         <section class="screen" id="screen-q4">
-            <h2>Pick your ideal first-date energy</h2>
-            <div class="options">
-                <button class="btn-option" onclick="answer('q4', 'cocktails', 'screen-q5')">Cocktails and banter</button>
-                <button class="btn-option" onclick="answer('q4', 'walk', 'screen-q5')">Coffee and a walk</button>
-                <button class="btn-option" onclick="answer('q4', 'dinner', 'screen-q5')">Dinner and dangerous eye contact</button>
-                <button class="btn-option" onclick="answer('q4', 'spontaneous', 'screen-q5')">Something spontaneous and slightly irresponsible</button>
-            </div>
-            <div class="custom-suggestion">
-                <label for="date-suggestion">Or suggest something else:</label>
-                <input type="text" id="date-suggestion" name="custom_date_idea" placeholder="Your creative date idea..." />
-                <!-- BUG FIX 3: Was calling nextScreen() directly, which skipped saving
-                     the custom input. Now calls submitCustomDate() which saves it first. -->
-                <button class="btn-primary" id="date-suggestion-btn" style="margin-top: 15px;" onclick="submitCustomDate()">Continue ✨</button>
+            <div class="sys-frame" data-label="query_04.exe // DATE PROTOCOL">
+                <div class="corner tl"></div><div class="corner tr"></div>
+                <div class="corner bl"></div><div class="corner br"></div>
+                <h2>// QUERY_04<br>Select your ideal first-date energy</h2>
+
+                <!--
+                    INSERT YOUR JFK JR / CB MEME HERE:
+                    1. Make it at imgflip.com/memegenerator
+                    2. Upload the image file to your GitHub repo
+                    3. Replace src="YOUR_MEME_FILENAME.jpg" below
+                -->
+                <img src="https://media.giphy.com/media/111ebonMs90YLu/giphy.gif" alt="Could be you" style="max-width: 260px; border-radius: 4px; margin: 0 auto 20px; display: block; border: 1px solid #00ff4144;">
+                <p style="font-size: 0.7rem; color: #005510; letter-spacing: 0.15em; text-transform: uppercase; margin-top: -14px; margin-bottom: 18px;">// replace with JFK jr meme</p>
+
+                <div class="options">
+                    <button class="btn-option" onclick="answer('q4', 'cocktails', 'screen-q5')">Cocktails and banter</button>
+                    <button class="btn-option" onclick="answer('q4', 'walk', 'screen-q5')">Coffee and a walk</button>
+                    <button class="btn-option" onclick="answer('q4', 'dinner', 'screen-q5')">Dinner and dangerous eye contact</button>
+                    <button class="btn-option" onclick="answer('q4', 'spontaneous', 'screen-q5')">Something spontaneous and slightly irresponsible</button>
+                </div>
+                <div class="custom-suggestion">
+                    <label for="date-suggestion">// OR INPUT CUSTOM DATE IDEA:</label>
+                    <input type="text" id="date-suggestion" name="custom_date_idea" placeholder="TYPE YOUR DATE IDEA HERE..." />
+                    <button class="btn-primary" id="date-suggestion-btn" style="margin-top: 12px;" onclick="submitCustomDate()">SUBMIT INPUT</button>
+                </div>
             </div>
         </section>
 
-        <!-- Question 5: Weekend Reality -->
+        <!-- ── Q5: WEEKEND ── -->
         <section class="screen" id="screen-q5">
-            <h2>What does your weekend availability usually look like?</h2>
-            <div class="options">
-                <button class="btn-option" onclick="answer('q5', 'friday', 'meme-4')">Friday works</button>
-                <button class="btn-option" onclick="answer('q5', 'saturday', 'meme-4')">Saturday is elite</button>
-                <button class="btn-option" onclick="answer('q5', 'sunday', 'meme-4')">Sunday is underrated</button>
-                <button class="btn-option" onclick="answer('q5', 'conditional', 'meme-4')">I'm free, but only if I like you</button>
+            <div class="sys-frame" data-label="query_05.exe // SCHEDULE SCAN">
+                <div class="corner tl"></div><div class="corner tr"></div>
+                <div class="corner bl"></div><div class="corner br"></div>
+                <h2>// QUERY_05<br>What does your weekend availability look like?</h2>
+                <div class="options">
+                    <button class="btn-option" onclick="answer('q5', 'friday', 'meme-4')">Friday works</button>
+                    <button class="btn-option" onclick="answer('q5', 'saturday', 'meme-4')">Saturday is elite</button>
+                    <button class="btn-option" onclick="answer('q5', 'sunday', 'meme-4')">Sunday is underrated</button>
+                    <button class="btn-option" onclick="answer('q5', 'conditional', 'meme-4')">I'm free, but only if I like you</button>
+                </div>
             </div>
         </section>
 
-        <!-- Meme 4 -->
+        <!-- ── MEME 4 ── -->
         <section class="screen meme" id="meme-4">
-            <h2>⚡ Alert</h2>
-            <p class="meme-text">Okay wait… so this might actually become plans</p>
-            <button class="btn-primary" onclick="nextScreen('screen-calendar')">Pick your window</button>
+            <div class="sys-frame" data-label="alert.exe">
+                <div class="corner tl"></div><div class="corner tr"></div>
+                <div class="corner bl"></div><div class="corner br"></div>
+                <div class="warning-header">⚡ ALERT ⚡</div>
+                <p class="meme-text">Okay wait… so this might actually become plans</p>
+                <img src="https://media0.giphy.com/media/6nWhy3ulBL7GSCvKw6/giphy.gif" alt="Surprised" style="max-width: 300px; border-radius: 4px; margin: 10px auto 20px; display: block; border: 1px solid #00ff4144;">
+                <button class="btn-primary" onclick="nextScreen('screen-calendar')">PICK YOUR WINDOW</button>
+            </div>
         </section>
 
-        <!-- Calendar Screen -->
+        <!-- ── CALENDAR ── -->
         <section class="screen" id="screen-calendar">
-            <h2>When are you free? (Weekends only)</h2>
-            <p class="subtitle">Select all days that work for you</p>
-            <div class="calendar">
-                <label class="calendar-day">
-                    <input type="checkbox" class="date-input" name="availability" value="Friday">
-                    <span>Friday</span>
-                </label>
-                <label class="calendar-day">
-                    <input type="checkbox" class="date-input" name="availability" value="Saturday">
-                    <span>Saturday</span>
-                </label>
-                <label class="calendar-day">
-                    <input type="checkbox" class="date-input" name="availability" value="Sunday">
-                    <span>Sunday</span>
-                </label>
+            <div class="sys-frame" data-label="schedule_v2.exe">
+                <div class="corner tl"></div><div class="corner tr"></div>
+                <div class="corner bl"></div><div class="corner br"></div>
+                <h2>// SELECT AVAILABLE DATES<br>(Weekends only)</h2>
+                <p class="subtitle">// CHECK ALL THAT APPLY</p>
+                <div class="calendar">
+                    <label class="calendar-day">
+                        <input type="checkbox" class="date-input" name="availability" value="Friday">
+                        <span>Friday</span>
+                    </label>
+                    <label class="calendar-day">
+                        <input type="checkbox" class="date-input" name="availability" value="Saturday">
+                        <span>Saturday</span>
+                    </label>
+                    <label class="calendar-day">
+                        <input type="checkbox" class="date-input" name="availability" value="Sunday">
+                        <span>Sunday</span>
+                    </label>
+                </div>
+                <button class="btn-primary" onclick="nextScreen('screen-final')">LOCK IT IN</button>
             </div>
-            <button class="btn-primary" onclick="nextScreen('screen-final')">Lock it in</button>
         </section>
 
-        <!-- Final Question -->
+        <!-- ── FINAL QUESTION ── -->
         <section class="screen" id="screen-final">
-            <h2>Would you go on a date with Michael?</h2>
-            <div class="options">
-                <button class="btn-option" onclick="answer('final', 'yes', 'screen-loading')">Yes, obviously</button>
-                <button class="btn-option" onclick="answer('final', 'snacks', 'screen-loading')">Yes, but I need snacks</button>
-                <button class="btn-option" onclick="answer('final', 'convince', 'screen-loading')">Potentially, convince me</button>
-                <button class="btn-option dodgy" id="noBtn" onclick="dodgeNo()">No</button>
+            <div class="sys-frame" data-label="final_query.exe">
+                <div class="corner tl"></div><div class="corner tr"></div>
+                <div class="corner bl"></div><div class="corner br"></div>
+                <div class="warning-header">⚠ CRITICAL QUERY ⚠</div>
+                <h2>// Would you go on a date with Michael?</h2>
+                <div class="options">
+                    <button class="btn-option" onclick="answer('final', 'yes', 'screen-loading')">Yes, obviously</button>
+                    <button class="btn-option" onclick="answer('final', 'snacks', 'screen-loading')">Yes, but I need snacks</button>
+                    <button class="btn-option" onclick="answer('final', 'convince', 'screen-loading')">Potentially, convince me</button>
+                    <button class="btn-option dodgy" id="noBtn" onclick="dodgeNo()">No</button>
+                </div>
             </div>
         </section>
 
-        <!-- Loading Screen -->
+        <!-- ── LOADING ── -->
         <section class="screen meme" id="screen-loading">
-            <h2>⏳ Calculating...</h2>
-            <p class="meme-text">Analyzing levels of charm, timing, delusion, and weekend logistics</p>
-            <div class="loader"></div>
+            <div class="sys-frame" data-label="processing.exe">
+                <div class="corner tl"></div><div class="corner tr"></div>
+                <div class="corner bl"></div><div class="corner br"></div>
+                <h2>// CALCULATING COMPATIBILITY</h2>
+                <p class="meme-text">Analyzing charm levels, timing, delusion & weekend logistics</p>
+                <div class="loader-wrap">
+                    <div class="loader-text">// RUNNING ANALYSIS</div>
+                    <div class="loader-bar"><div class="loader-fill"></div></div>
+                </div>
+                <div class="sys-readout" style="margin-top: 16px; font-size: 0.75rem;">
+                    <span class="label">CHARM: </span><span class="value blink">SCANNING_</span><br>
+                    <span class="label">VIBES: </span><span class="value blink">SCANNING_</span><br>
+                    <span class="label">RED FLAGS: </span><span class="value">0 (suspicious)</span>
+                </div>
+            </div>
         </section>
 
-        <!-- Result Screen -->
+        <!-- ── RESULT ── -->
         <section class="screen" id="screen-result">
-            <h1 class="result-title">100/100</h1>
-            <h2>Compatibility Confirmed</h2>
-            <p class="result-text">A frankly suspicious result, but who are we to argue with destiny?</p>
-            <p class="result-sub">The stars, the algorithm, and several memes have spoken.</p>
-            <p class="result-final">You are now cleared for one date.</p>
-            <form id="date-form" action="https://formspree.io/f/mqeylwkn" method="POST">
-                <input type="hidden" name="answers" id="answersField">
-                <input type="hidden" name="score" id="scoreField">
-                <input type="text" name="name" placeholder="Your name" required>
-                <input type="text" name="instagram" placeholder="Your Instagram handle" required>
-                <button type="submit" class="btn-primary">Submit & See You Soon</button>
-            </form>
+            <div class="sys-frame" data-label="result.exe">
+                <div class="corner tl"></div><div class="corner tr"></div>
+                <div class="corner bl"></div><div class="corner br"></div>
+                <h1 class="result-title">100/100</h1>
+                <div class="warning-header" style="color: var(--green); text-shadow: 0 0 10px rgba(0,255,65,0.5);">COMPATIBILITY CONFIRMED</div>
+                <div class="sys-readout" style="margin: 20px 0;">
+                    <span class="label">RESULT: </span><span class="value">Frankly suspicious but undeniable</span><br>
+                    <span class="label">VERIFIED BY: </span><span class="value">The algorithm, the stars, several memes</span><br>
+                    <span class="label">STATUS: </span><span class="value">CLEARED FOR ONE DATE</span>
+                </div>
+                <form id="date-form" action="https://formspree.io/f/mqeylwkn" method="POST">
+                    <input type="hidden" name="answers" id="answersField">
+                    <input type="hidden" name="score" id="scoreField">
+                    <input type="text" name="name" placeholder="ENTER YOUR NAME" required>
+                    <input type="text" name="instagram" placeholder="INSTAGRAM HANDLE" required>
+                    <button type="submit" class="btn-primary">SUBMIT & LOCK IN</button>
+                </form>
+            </div>
         </section>
 
-        <!-- Thank You Screen -->
+        <!-- ── THANK YOU ── -->
         <section class="screen" id="thank-you">
             <canvas id="confetti-canvas"></canvas>
             <div class="thank-you-content">
-                <h1 class="glow">🎉 You did it! 🎉</h1>
-                <h2>Congrats on not fumbling</h2>
-                <p class="result-text">Michael will review your responses and reach out soon</p>
-                <p class="meme-text">Pro tip: He WILL stalk your Instagram before following you back 👀</p>
-                <img src="https://media.giphy.com/media/111ebonMs90YLu/giphy.gif" alt="Success" style="max-width: 300px; margin: 20px auto;">
+                <div class="sys-frame" data-label="success.exe" style="border-color: #00ff41;">
+                    <div class="corner tl"></div><div class="corner tr"></div>
+                    <div class="corner bl"></div><div class="corner br"></div>
+                    <h1 class="glow">MISSION COMPLETE</h1>
+                    <div class="sys-readout" style="margin: 20px 0; text-align: left;">
+                        <span class="label">STATUS: </span><span class="value">FUMBLE AVOIDED ✓</span><br>
+                        <span class="label">OUTCOME: </span><span class="value">Date secured</span><br>
+                        <span class="label">NEXT STEP: </span><span class="value blink">Awaiting Michael's response_</span>
+                    </div>
+                    <p class="meme-text" style="font-size: 1rem;">Pro tip: He WILL stalk your Instagram before following you back 👀</p>
+                    <img src="https://media.giphy.com/media/111ebonMs90YLu/giphy.gif" alt="Success" style="max-width: 280px; margin: 16px auto; display: block; border: 1px solid #00ff4144;">
+                </div>
             </div>
         </section>
-    </div>
 
-    <!-- Background Music -->
-    <audio id="background-music" loop>
-        <source src="music/it-aint-over.mp3" type="audio/mpeg">
-    </audio>
+    </div>
 
     <script src="script.js"></script>
 </body>
