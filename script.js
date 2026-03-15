@@ -152,30 +152,30 @@ function startConfetti() {
 }
 
 // ── NO BUTTON ──
-// Reset state every time the final screen becomes active
-// so the button always starts in the correct in-flow position.
-const MAX_DODGES = 2;
+const MAX_DODGES = 3;
 let dodgeCount = 0;
+
+function resetNoBtn() {
+    dodgeCount = 0;
+    const noBtn = document.getElementById('noBtn');
+    if (!noBtn) return;
+    // Clear any fixed positioning first
+    noBtn.removeAttribute('style');
+    // Now set only what we need
+    noBtn.style.position = 'relative';
+    // Remove old handlers then re-attach fresh
+    noBtn.onmouseover = null;
+    noBtn.onclick = null;
+    noBtn.title = '';
+    // Small delay so the style reset renders before we attach the hover
+    setTimeout(() => { noBtn.onmouseover = dodgeNo; }, 50);
+}
 
 const finalScreen = document.getElementById('screen-final');
 if (finalScreen) {
     const finalObserver = new MutationObserver(mutations => {
         mutations.forEach(m => {
-            if (m.target.classList.contains('active')) {
-                // Reset button to in-flow position
-                dodgeCount = 0;
-                const noBtn = document.getElementById('noBtn');
-                if (noBtn) {
-                    noBtn.style.position = 'relative';
-                    noBtn.style.left = 'auto';
-                    noBtn.style.top = 'auto';
-                    noBtn.style.transition = 'none';
-                    noBtn.style.zIndex = 'auto';
-                    noBtn.onmouseover = dodgeNo;
-                    noBtn.onclick = null;
-                    noBtn.title = '';
-                }
-            }
+            if (m.target.classList.contains('active')) resetNoBtn();
         });
     });
     finalObserver.observe(finalScreen, { attributes: true, attributeFilter: ['class'] });
@@ -186,13 +186,6 @@ function dodgeNo() {
     if (!noBtn) return;
 
     dodgeCount++;
-
-    if (dodgeCount > MAX_DODGES) {
-        noBtn.onmouseover = null;
-        noBtn.onclick = () => answer('final', 'no-means-yes', 'screen-loading');
-        noBtn.title = 'Fine. You win. 😤';
-        return;
-    }
 
     const maxX = window.innerWidth  - 220;
     const maxY = window.innerHeight - 60;
@@ -205,7 +198,7 @@ function dodgeNo() {
     noBtn.style.transition = 'all 0.2s ease';
     noBtn.style.zIndex = '1000';
 
-    if (dodgeCount === MAX_DODGES) {
+    if (dodgeCount >= MAX_DODGES) {
         noBtn.onmouseover = null;
         noBtn.onclick = () => answer('final', 'no-means-yes', 'screen-loading');
         noBtn.title = 'Fine. You win. 😤';
