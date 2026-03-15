@@ -33,9 +33,29 @@
             50%       { opacity: 0; }
         }
 
-        /* ── FIX 4: No button stays in flow until it moves ── */
-        #noBtn {
-            position: relative;
+        /* ── Music toggle above window ── */
+        #music-toggle {
+            display: none;
+            position: fixed;
+            top: 8px;
+            right: 8px;
+            background: var(--silver);
+            border: 3px solid;
+            border-color: var(--bevel-lt) var(--bevel-dk) var(--bevel-dk) var(--bevel-lt);
+            box-shadow: 2px 2px 0 #000;
+            cursor: pointer;
+            font-size: 0.8rem;
+            font-family: 'Comic Neue', cursive;
+            font-weight: 700;
+            color: #000080;
+            padding: 4px 10px;
+            z-index: 9999;
+            white-space: nowrap;
+        }
+        #music-toggle:active {
+            border-color: var(--bevel-dk) var(--bevel-lt) var(--bevel-lt) var(--bevel-dk);
+            box-shadow: none;
+            transform: translate(2px, 2px);
         }
     </style>
 </head>
@@ -448,6 +468,8 @@
         </section>
 
     </div>
+    <button id="music-toggle" onclick="toggleMusic()" title="Toggle music">♪ music</button>
+
     <script src="script.js"></script>
 </body>
 </html>

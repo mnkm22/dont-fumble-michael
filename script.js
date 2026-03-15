@@ -21,7 +21,7 @@ function startMusic(play) {
         bgMusic.play().then(() => updateToggle()).catch(() => updateToggle());
     }
     const btn = document.getElementById('music-toggle');
-    if (btn) btn.style.display = 'flex';
+    if (btn) btn.style.display = 'block';
     updateToggle();
     nextScreen('screen-hero');
 }
@@ -30,7 +30,8 @@ function updateToggle() {
     const btn = document.getElementById('music-toggle');
     if (!btn) return;
     const playing = bgMusic && !bgMusic.paused;
-    btn.style.opacity = playing ? '1' : '0.4';
+    btn.style.opacity = playing ? '1' : '0.5';
+    btn.textContent = playing ? '♪ music' : '♪ muted';
     btn.title = playing ? 'Mute music' : 'Play music';
 }
 
