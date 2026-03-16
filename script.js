@@ -71,6 +71,27 @@ function answer(question, value, nextScreenId) {
     if (nextScreenId) nextScreen(nextScreenId);
 }
 
+// ── ALT CONTACT ──
+// Toggles the alternative contact field and swaps Instagram to optional
+function toggleAltContact() {
+    const altField = document.getElementById('alt-contact-field');
+    const igField  = document.getElementById('instagram-field');
+    const altInput = document.getElementById('alt-contact-input');
+    const visible  = altField.style.display === 'block';
+
+    if (visible) {
+        altField.style.display = 'none';
+        altInput.required = false;
+        igField.required = true;
+        igField.placeholder = 'Your Instagram handle';
+    } else {
+        altField.style.display = 'block';
+        altInput.required = true;
+        igField.required = false;
+        igField.placeholder = 'Instagram (optional)';
+    }
+}
+
 // Saves custom date idea before navigating away
 function submitCustomDate() {
     const input = document.getElementById('date-suggestion');
@@ -152,7 +173,7 @@ function startConfetti() {
 }
 
 // ── NO BUTTON ──
-const MAX_DODGES = 3;
+const MAX_DODGES = 5;
 let dodgeCount = 0;
 
 function resetNoBtn() {
@@ -164,7 +185,6 @@ function resetNoBtn() {
     noBtn.onmouseover = null;
     noBtn.onclick = null;
     noBtn.title = '';
-    // Remove old touch listener if any, then add fresh one
     noBtn.removeEventListener('touchstart', handleNoBtnTouch);
     setTimeout(() => {
         noBtn.onmouseover = dodgeNo;
@@ -174,10 +194,9 @@ function resetNoBtn() {
 
 function handleNoBtnTouch(e) {
     if (dodgeCount < MAX_DODGES) {
-        e.preventDefault(); // blocks the click that follows touchstart
+        e.preventDefault();
         dodgeNo();
     }
-    // If dodgeCount >= MAX_DODGES, do nothing — let onclick handle it
 }
 
 const finalScreen = document.getElementById('screen-final');
@@ -196,20 +215,40 @@ function dodgeNo() {
 
     dodgeCount++;
 
-    const maxX = window.innerWidth  - 220;
-    const maxY = window.innerHeight - 60;
-    const randomX = Math.max(10, Math.random() * maxX);
-    const randomY = Math.max(10, Math.random() * maxY);
+    // Get the bounding box of the answer options to avoid covering them
+    const optionsBox = document.getElementById('final-options');
+    const avoid = optionsBox ? optionsBox.getBoundingClientRect() : null;
+
+    const btnW = 220;
+    const btnH = 50;
+    let randomX, randomY;
+    let attempts = 0;
+
+    do {
+        randomX = Math.max(10, Math.random() * (window.innerWidth  - btnW - 20));
+        randomY = Math.max(10, Math.random() * (window.innerHeight - btnH - 20));
+        attempts++;
+        // If we can't find a clear spot after 20 tries, just place it anywhere
+        if (attempts > 20) break;
+        // Check if it overlaps the options area
+        const overlaps = avoid &&
+            randomX < avoid.right + 10 &&
+            randomX + btnW > avoid.left - 10 &&
+            randomY < avoid.bottom + 10 &&
+            randomY + btnH > avoid.top - 10;
+        if (!overlaps) break;
+    } while (true);
 
     noBtn.style.position = 'fixed';
     noBtn.style.left = randomX + 'px';
     noBtn.style.top  = randomY + 'px';
     noBtn.style.transition = 'all 0.2s ease';
     noBtn.style.zIndex = '1000';
+    noBtn.style.width = btnW + 'px';
 
     if (dodgeCount >= MAX_DODGES) {
         noBtn.onmouseover = null;
-        noBtn.ontouchstart = null;
+        noBtn.removeEventListener('touchstart', handleNoBtnTouch);
         noBtn.onclick = () => answer('final', 'no-means-yes', 'screen-loading');
         noBtn.title = 'Fine. You win. 😤';
     }

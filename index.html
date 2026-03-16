@@ -35,6 +35,36 @@
             0%, 100% { opacity: 1; }
             50%       { opacity: 0; }
         }
+        /* Alternative contact toggle */
+        .alt-contact {
+            margin-top: 10px;
+            font-size: 0.8rem;
+            color: #555;
+            font-family: 'Comic Neue', cursive;
+        }
+        .alt-contact a {
+            color: #000080;
+            cursor: pointer;
+            text-decoration: underline;
+        }
+        #alt-contact-field {
+            display: none;
+            margin-top: 10px;
+        }
+        #alt-contact-field input {
+            width: 100%;
+            padding: 8px 10px;
+            font-family: 'Comic Neue', cursive;
+            font-size: 0.9rem;
+            border: 2px solid;
+            border-color: var(--bevel-dk) var(--bevel-lt) var(--bevel-lt) var(--bevel-dk);
+            background: #fff;
+            color: #000;
+            outline: none;
+            margin-top: 6px;
+        }
+        #alt-contact-field input:focus { border-color: var(--navy); }
+        #alt-contact-field input::placeholder { color: #aaa; font-style: italic; }
     </style>
 </head>
 <body>
@@ -54,12 +84,7 @@
                 </div>
                 <div class="win-body">
                     <div class="under-construction" style="color: #cc0000;">🚧 WARNING: Life-changing decisions ahead 🚧</div>
-                    <h2>Enable background music?</h2>
-                    <div class="inset">
-                        📁 File: it-aint-over.mp3<br>
-                        📊 Status: awaiting input...<br>
-                        ⚠️ Warning: This site sounds better with music
-                    </div>
+                    <h2>Turn on background music?</h2>
                     <div class="options">
                         <button class="btn-option" onclick="startMusic(true)">✅ YES — play the music!</button>
                         <button class="btn-option" onclick="startMusic(false)">🔇 No thanks, keep quiet</button>
@@ -84,7 +109,7 @@
                     <h1>DONT<br>FUMBLE</h1>
                     <div class="inset">
                         ⚠️ WARNING: Some paths lead to banter,<br>
-                        beverages &amp; unforeseen chemistry.<br>
+                        drinks &amp; unforeseen chemistry.<br>
                         Proceed with caution. 😈
                     </div>
                     <button class="btn-primary" onclick="nextScreen('screen-disclaimer')">Enter the portal &gt;&gt;</button>
@@ -106,7 +131,7 @@
                     <div class="inset">
                         This is not a test.<br><br>
                         Your answers WILL be judged — in a fun<br>
-                        and attractive way.<br><br>
+                        way. No pressure.<br><br>
                         By clicking OK you acknowledge the risk<br>
                         of potentially having a really great time.
                     </div>
@@ -125,7 +150,7 @@
                     </div>
                 </div>
                 <div class="win-body">
-                    <h2>QUESTION 1 OF 5<br>What was the initial reason you matched?</h2>
+                    <h2>QUESTION 1 OF 5<br>What was the initial reason you matched with Michael?</h2>
                     <div class="options">
                         <button class="btn-option" onclick="answer('q1', 'fun', 'meme-1')">😄 He seems fun</button>
                         <button class="btn-option" onclick="answer('q1', 'trouble', 'meme-1')">😈 He seems like trouble — the manageable kind</button>
@@ -344,7 +369,7 @@
                 </div>
                 <div class="win-body">
                     <h2>💘 Would you go on a date with Michael?</h2>
-                    <div class="options">
+                    <div class="options" id="final-options">
                         <button class="btn-option" onclick="answer('final', 'yes', 'screen-loading')">😍 Yes, obviously</button>
                         <button class="btn-option" onclick="answer('final', 'snacks', 'screen-loading')">🍿 Yes, but I need snacks</button>
                         <button class="btn-option" onclick="answer('final', 'convince', 'screen-loading')">🤔 Potentially, convince me</button>
@@ -400,7 +425,14 @@
                         <input type="hidden" name="answers" id="answersField">
                         <input type="hidden" name="score" id="scoreField">
                         <input type="text" name="name" placeholder="Your name" required>
-                        <input type="text" name="instagram" placeholder="Instagram handle" required>
+                        <input type="text" id="instagram-field" name="instagram" placeholder="Your Instagram handle" required>
+                        <!-- FIX 1: Alternative contact option -->
+                        <div class="alt-contact">
+                            No Instagram? <a onclick="toggleAltContact()">Use a different contact instead</a>
+                        </div>
+                        <div id="alt-contact-field">
+                            <input type="text" name="alt_contact" id="alt-contact-input" placeholder="Phone number, TikTok, WhatsApp, etc." />
+                        </div>
                         <button type="submit" class="btn-primary">Submit &amp; lock it in &gt;&gt;</button>
                     </form>
                 </div>
@@ -428,7 +460,7 @@
                             Michael will be in touch soon 💌<br><br>
                             🏆 You just made it through a 9-screen obstacle course<br>
                             crafted with equal parts effort and audacity.<br>
-                            Your reward? A very good drink, and possibly Michael. 🥂
+                            Your reward? A very good drink, and possibly (dare we say) a good time. 🥂
                         </div>
                         <img src="https://media.giphy.com/media/111ebonMs90YLu/giphy.gif" alt="Success" style="max-width: 280px; display: block; margin: 16px auto; border: 3px solid; border-color: #fff #555 #555 #fff; box-shadow: 3px 3px 0 #000;">
                     </div>
@@ -438,7 +470,6 @@
 
     </div>
 
-    <!-- Single music toggle button, fixed bottom right -->
     <button id="music-toggle" onclick="toggleMusic()" title="Toggle music">♪ music</button>
 
     <script src="script.js"></script>
